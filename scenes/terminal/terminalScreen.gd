@@ -39,4 +39,7 @@ func _on_line_edit_text_submitted(new_text: String) -> void:
 	# Imprimimos a resposta usando o nome que acabamos de salvar na memoria
 	_print_terminal("Acesso concedido, " + System.player_name + ".\nIniciando simulação de sanidade...")
 	
+	# Puxa o primeiro parágrafo do array direto do json
+	var phrase_text = System.pages["introducao"][0]
+	_print_terminal(phrase_text)
 	 
