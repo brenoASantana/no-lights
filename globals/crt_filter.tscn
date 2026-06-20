@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ccncycddw88kc"]
+
+[ext_resource type="Shader" uid="uid://fadbhyetafjo" path="res://scenes/terminal/terminal.gdshader" id="1_onwgr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ax852"]
+shader = ExtResource("1_onwgr")
+shader_parameter/scanlines = 4.0
+shader_parameter/curvature = 3.0
+
+[node name="CRTFilter" type="CanvasLayer" unique_id=587851331]
+layer = 100
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2063742660]
+material = SubResource("ShaderMaterial_ax852")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

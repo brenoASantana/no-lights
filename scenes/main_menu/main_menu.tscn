@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwqoymr2u3qg7"]
 
 [ext_resource type="Script" uid="uid://d13f2tq5hkuq0" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
+[ext_resource type="FontFile" uid="uid://c5iaqtves12kf" path="res://assets/fonts/ShareTechMono-Regular.ttf" id="2_0ebjn"]
 
 [node name="MainMenu" type="Control" unique_id=354339325]
 layout_mode = 3
@@ -26,12 +27,16 @@ grow_vertical = 2
 [node name="Label" type="Label" parent="VBoxContainer" unique_id=36427278]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "No Lights"
 
 [node name="Button" type="Button" parent="VBoxContainer" unique_id=1456618093]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "Iniciar"
 
