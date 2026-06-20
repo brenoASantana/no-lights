@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bkr57smdb54db"]
+
+[ext_resource type="Script" uid="uid://6kjvgsn7k20s" path="res://system.gd" id="3_0u45f"]
+[ext_resource type="Script" uid="uid://chgcc6vdtocix" path="res://autoload.gd" id="3_b5qft"]
+[ext_resource type="Script" uid="uid://cpskdktncjjif" path="res://terminal.gd" id="4_0u45f"]
+[ext_resource type="Script" uid="uid://ydyymdxqdlvb" path="res://player.gd" id="4_cvdli"]
+
+[node name="Terminal" type="Node2D" unique_id=1019128902]
+
+[node name="Autoload" type="Control" parent="." unique_id=85873656]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_b5qft")
+
+[node name="Terminal" type="RichTextLabel" parent="." unique_id=2138422795]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_0u45f")
+
+[node name="System" type="Control" parent="." unique_id=1399821051]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_0u45f")
+
+[node name="Player" type="Area2D" parent="." unique_id=1101150571]
+script = ExtResource("4_cvdli")
