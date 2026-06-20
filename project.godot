@@ -11,9 +11,21 @@ config_version=5
 [application]
 
 config/name="No Lights"
-run/main_scene="res://terminal.tscn"
+run/main_scene="uid://dwqoymr2u3qg7"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+System="*uid://chgcc6vdtocix"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="canvas_items"
 
 [physics]
 
@@ -22,3 +34,4 @@ config/icon="res://icon.svg"
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0, 0, 0, 0)
