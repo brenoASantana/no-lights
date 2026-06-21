@@ -42,4 +42,4 @@ theme_override_fonts/font = ExtResource("1_0uvmq")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2y7k8")
 
-[connection signal="text_submitted" from="TerminalScreen/LineEdit" to="TerminalScreen" method="_on_line_edit_text_submitted"]
+[connection signal="gui_input" from="TerminalScreen/LineEdit" to="TerminalScreen" method="_on_line_edit_gui_input"]

@@ -1,9 +1,23 @@
 {
-	"introducao": [
-		"O breu tomou conta de tudo.",
-		"Você não consegue ver suas próprias mão.",
-		"O ar está pesado. Algo respira no canto da sala.",
-	],
-	"inspecionar_janela": "A janela está trancada por fora. O vidro está frio como gelo.",
-	"encontro_sombra": "Uma figura se distorce na escuridão. Sua sanidade começa a escorrer pelas suas mãos."
+  "introducao": [
+	"Eles disseram no noticiário da noite que seria apenas um eclipse incomum. Eles mentiram.",
+	"O relógio digital pisca 08:42 da manhã, mas pela janela, o céu é um oceano denso e infinito de piche.",
+	"O Sol não nasceu hoje. A luz simplesmente desistiu de existir.",
+	"O silêncio lá fora é absoluto. Não há som de pássaros, não há barulho de carros, não há vozes. Apenas o zumbido estático e verde deste monitor.",
+	"O breu tomou conta de tudo. Você tenta tatear o próprio rosto, mas não consegue ver suas próprias mãos.",
+	"A temperatura cai vertiginosamente. O ar fica pesado, apertando seus pulmões a cada suspiro.",
+    "E então, você percebe... Algo respira no canto da sala."
+  ],
+  "inspecionar_janela": "A janela está trancada por fora. O vidro está frio como gelo.",
+  "encontro_sombra": "Uma figura se distorce na escuridão. Sua sanidade começa a escorrer pelas suas mãos.",
+  "olhar": {
+	"quarto": "Um cômodo claustrofóbico. A única luz vem da estática deste terminal. Há uma porta e uma janela.",
+	"janela": "A janela está trancada por fora. O vidro está frio como gelo. O breu lá fora parece vivo.",
+	"porta": "Uma porta de madeira maciça. Trancada. Você precisa de uma chave."
+  },
+  "pegar": {
+	"chave": "Você tateia o chão frio e seus dedos batem em um metal pesado. Você pegou a Chave Velha.",
+	"lanterna": "Você abre a gaveta do terminal e encontra uma lanterna plástica. Está sem pilhas."
+  },
+  "ajuda": "Comandos válidos: olhar [objeto], pegar [objeto], usar [objeto]. Exemplo: 'olhar janela'."
 }

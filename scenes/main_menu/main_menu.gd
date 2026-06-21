@@ -13,4 +13,7 @@ func _process(delta: float) -> void:
 
 # Ao pressionar o botao, mata essa cena do menu e vai para a cena do terminal.
 func _on_button_pressed() -> void:
+	# 1. Sequestra e oculta o mouse instantaneamente!
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
 	get_tree().change_scene_to_file("res://scenes/terminal/terminal.tscn")

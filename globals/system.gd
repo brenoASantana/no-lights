@@ -15,6 +15,11 @@ var pages: Dictionary = {}
 func _ready() -> void:
 	# Assim que o jogo abre, ele lê o arquivo e guarda na memória
 	_load_story()
+	
+func _process(_delta: float) -> void:
+	# Se apertar ESC, solta o mouse e deixa ele visível de novo
+	if Input.is_action_just_pressed("ui_cancel"):
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 # 3. As Porteiras (Controladores de Estado)
 func on_hit_player(damage: int) -> void:
