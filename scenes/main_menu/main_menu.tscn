@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://d13f2tq5hkuq0" path="res://scenes/main_menu/main_menu.gd" id="1_fsom3"]
 [ext_resource type="FontFile" uid="uid://c5iaqtves12kf" path="res://assets/fonts/ShareTechMono-Regular.ttf" id="2_0ebjn"]
-[ext_resource type="AudioStream" uid="uid://ddvjagj70u2et" path="res://assets/audio/Library Studies/Pentagram Home Video - Flexi Disc.ogg" id="3_ob46e"]
+[ext_resource type="AudioStream" uid="uid://ddvjagj70u2et" path="res://assets/audio/Library Studies - Pentagram Home Video/Flexi Disc.ogg" id="3_ob46e"]
 
 [node name="MainMenu" type="Control" unique_id=354339325]
 layout_mode = 3
@@ -25,7 +25,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=36427278]
+[node name="Title" type="Label" parent="VBoxContainer" unique_id=36427278]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 1, 0, 1)
@@ -33,7 +33,7 @@ theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "No Lights"
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=1456618093]
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1456618093]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 1, 0, 1)
@@ -41,9 +41,18 @@ theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "Iniciar"
 
+[node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1987596663]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ebjn")
+theme_override_font_sizes/font_size = 48
+text = "Créditos"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=851735316]
 stream = ExtResource("3_ob46e")
 volume_db = -15.0
 autoplay = true
 
-[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

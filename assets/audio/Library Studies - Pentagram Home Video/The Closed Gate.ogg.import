@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b3204tne73rlq"
+path="res://.godot/imported/The Closed Gate.ogg-1b1492de26c5136ae2ff18ceb268f9a8.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Library Studies - Pentagram Home Video/The Closed Gate.ogg"
+dest_files=["res://.godot/imported/The Closed Gate.ogg-1b1492de26c5136ae2ff18ceb268f9a8.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

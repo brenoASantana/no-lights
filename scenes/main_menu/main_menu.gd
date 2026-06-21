@@ -17,3 +17,8 @@ func _on_button_pressed() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 	get_tree().change_scene_to_file("res://scenes/terminal/terminal.tscn")
+
+
+func _on_credits_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/credits/credits.tscn")
+	
