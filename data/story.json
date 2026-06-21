@@ -1,23 +1,34 @@
 {
-  "introducao": [
-	"Eles disseram no noticiário da noite que seria apenas um eclipse incomum. Eles mentiram.",
-	"O relógio digital pisca 08:42 da manhã, mas pela janela, o céu é um oceano denso e infinito de piche.",
-	"O Sol não nasceu hoje. A luz simplesmente desistiu de existir.",
-	"O silêncio lá fora é absoluto. Não há som de pássaros, não há barulho de carros, não há vozes. Apenas o zumbido estático e verde deste monitor.",
-	"O breu tomou conta de tudo. Você tenta tatear o próprio rosto, mas não consegue ver suas próprias mãos.",
-	"A temperatura cai vertiginosamente. O ar fica pesado, apertando seus pulmões a cada suspiro.",
-    "E então, você percebe... Algo respira no canto da sala."
-  ],
-  "inspecionar_janela": "A janela está trancada por fora. O vidro está frio como gelo.",
-  "encontro_sombra": "Uma figura se distorce na escuridão. Sua sanidade começa a escorrer pelas suas mãos.",
-  "olhar": {
-	"quarto": "Um cômodo claustrofóbico. A única luz vem da estática deste terminal. Há uma porta e uma janela.",
-	"janela": "A janela está trancada por fora. O vidro está frio como gelo. O breu lá fora parece vivo.",
-	"porta": "Uma porta de madeira maciça. Trancada. Você precisa de uma chave."
-  },
-  "pegar": {
-	"chave": "Você tateia o chão frio e seus dedos batem em um metal pesado. Você pegou a Chave Velha.",
-	"lanterna": "Você abre a gaveta do terminal e encontra uma lanterna plástica. Está sem pilhas."
-  },
-  "ajuda": "Comandos válidos: olhar [objeto], pegar [objeto], usar [objeto]. Exemplo: 'olhar janela'."
+	"introducao": [
+		"Eles disseram no noticiário da noite que seria apenas um eclipse incomum. Eles mentiram.",
+		"O relógio digital pisca 08:42 da manhã, mas pela janela, o céu é um oceano denso e infinito de piche.",
+		"O Sol não nasceu hoje. A luz simplesmente desistiu de existir.",
+		"O silêncio lá fora é absoluto. Não há som de pássaros, não há barulho de carros, não há vozes. Apenas o zumbido estático e verde deste monitor.",
+		"O breu tomou conta de tudo. Você tenta tatear o próprio rosto, mas não consegue ver suas próprias mãos.",
+		"A temperatura cai vertiginosamente. O ar fica pesado, apertando seus pulmões a cada suspiro."
+	],
+	"cenario_quarto": {
+		"descricao": "Um cômodo claustrofóbico. A única luz vem da estática deste terminal. Há uma porta, uma janela com o vidro trincado, e um pedaço de jornal caído no assoalho.",
+		"janela": "A janela está trancada por fora. Pela fresta do vidro trincado, um vento com cheiro de mato úmido entra no quarto. Foi por aqui que o jornal voou para dentro.",
+		"porta": "Uma porta de madeira maciça. Trancada. O trinco está congelado.",
+		"chao": "O assoalho de madeira range. O recorte de jornal parece estar sujo de uma terra negra e espessa."
+	},
+	"itens_interativeis": {
+		"chave": "Você tateia o rodapé e seus dedos batem em um metal pesado. Você pegou a Chave Enferrujada.",
+		"lanterna": "Você abre a gaveta do terminal e encontra uma lanterna plástica. Está sem pilhas.",
+		"jornal": "Um recorte rasgado de um diário local antigo. O papel está úmido e as bordas rasgadas violentamente. Você pode tentar 'ler jornal'."
+	},
+	"documentos_lore": {
+		"jornal": {
+			"texto": "As autoridades pedem calma... (Ela com certeza ouviu você).",
+			"event_sound": "whisper_matinta"
+		},
+		"bilhete_comum": {
+			"texto": "Não esqueça de comprar pão."
+		}
+	},
+	"eventos_dinamicos": {
+		"assobio_matinta": "De repente, um assobio extremamente agudo, longo e estridente corta a escuridão lá fora. Não é o vento. É humano, e ao mesmo tempo, não é. O som vibra nos seus dentes. A criatura está lá fora. E percebeu que você está aqui dentro."
+	},
+	"ajuda": "Comandos válidos: olhar [objeto], pegar [objeto], ler [documento]. Exemplo: 'olhar janela'."
 }
