@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bj0btuoe8bfdk"
+path="res://.godot/imported/Pentagram Home Video - A Warning Before Reading.ogg-a6e29168105dfc5bef42c790c46a8a0a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Library Studies/Pentagram Home Video - A Warning Before Reading.ogg"
+dest_files=["res://.godot/imported/Pentagram Home Video - A Warning Before Reading.ogg-a6e29168105dfc5bef42c790c46a8a0a.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

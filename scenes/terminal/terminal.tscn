@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bkr57smdb54db"]
 
 [ext_resource type="FontFile" uid="uid://c5iaqtves12kf" path="res://assets/fonts/ShareTechMono-Regular.ttf" id="1_0uvmq"]
+[ext_resource type="AudioStream" uid="uid://bj0btuoe8bfdk" path="res://assets/audio/Library Studies/Pentagram Home Video - A Warning Before Reading.ogg" id="3_0uvmq"]
 [ext_resource type="Script" uid="uid://cpskdktncjjif" path="res://scenes/terminal/terminalScreen.gd" id="4_0u45f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7k8"]
@@ -41,5 +42,10 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("1_0uvmq")
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_2y7k8")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1123969415]
+stream = ExtResource("3_0uvmq")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="gui_input" from="TerminalScreen/LineEdit" to="TerminalScreen" method="_on_line_edit_gui_input"]
