@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 System="*uid://chgcc6vdtocix"
 CrtFilter="*uid://ccncycddw88kc"
+AudioGlobal="*uid://c4ouu1l2ibgm"
 
 [display]
 

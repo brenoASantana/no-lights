@@ -41,7 +41,7 @@ text = "[center]
 [font_size=24]Library Studies Album por Pentagram Home Video[/font_size]
 [/center]"
 
-[node name="Button" type="Button" parent="." unique_id=32832430]
+[node name="BackButton" type="Button" parent="." unique_id=32832430]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -65,4 +65,4 @@ stream = ExtResource("2_8n0nl")
 volume_db = -15.0
 autoplay = true
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

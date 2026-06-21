@@ -2,8 +2,13 @@ extends RichTextLabel
 
 var timer_per_letter: float = 0.03
 var actual_tween: Tween
+var soundtrack = preload("res://assets/audio/Library Studies - Pentagram Home Video/A Warning Before Reading.ogg")
 
 func _ready() -> void:
+	# Manda o Autoload calar a boca, cortando o som do Menu
+	AudioGlobal.stop_music()
+	AudioGlobal.play_music(soundtrack)
+	
 	# 1. Puxa toda a introdução do JSON juntando as frases com quebra de linha
 	var array_introducao = System.pages["introducao"]
 	var texto_completo = "\n".join(array_introducao)

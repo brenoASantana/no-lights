@@ -5,8 +5,12 @@ extends Control
 
 @onready var credits_container = $VBoxContainer
 
+var soundtrack = preload("res://assets/audio/Library Studies - Pentagram Home Video/The Closed Gate.ogg")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	AudioGlobal.stop_music()
+	AudioGlobal.play_music(soundtrack)
 	# SETUP INICIAL: 
 	# Pega a altura total da janela do jogo e empurra o container para essa exata coordenada.
 	# Isso faz o texto nascer exatamente um pixel abaixo da borda inferior da tela.
@@ -32,11 +36,11 @@ func _process(delta: float) -> void:
 	if credits_container.position.y < -credits_container.size.y:
 		_end_credits()
 
-
-func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
-	
-
 func _end_credits() -> void:
 	# O encerramento natural após a leitura completa
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+
+
+func _on_back_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+	

@@ -41,6 +41,14 @@ theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "Iniciar"
 
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=799691871]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ebjn")
+theme_override_font_sizes/font_size = 48
+text = "Opções"
+
 [node name="CreditsButton" type="Button" parent="VBoxContainer" unique_id=1987596663]
 layout_mode = 2
 size_flags_vertical = 3
@@ -49,10 +57,20 @@ theme_override_fonts/font = ExtResource("2_0ebjn")
 theme_override_font_sizes/font_size = 48
 text = "Créditos"
 
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1063609247]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("2_0ebjn")
+theme_override_font_sizes/font_size = 48
+text = "Sair do jogo"
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=851735316]
 stream = ExtResource("3_ob46e")
 volume_db = -15.0
 autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
