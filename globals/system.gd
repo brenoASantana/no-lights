@@ -12,6 +12,9 @@ var sanity: int = 100
 # O dicionario que vai guardar toda a historia do JSON
 var pages: Dictionary = { }
 
+var inventory: Array = []
+var current_room: String = "quarto" # O jogo sempre começa aqui
+
 
 func _ready() -> void:
 	# Assim que o jogo abre, ele lê o arquivo e guarda na memória

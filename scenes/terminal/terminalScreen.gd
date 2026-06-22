@@ -6,43 +6,30 @@ var soundtrack = preload("res://assets/audio/Library Studies - Pentagram Home Vi
 
 
 func _ready() -> void:
-	# Manda o Autoload calar a boca, cortando o som do Menu
 	AudioGlobal.stop_music()
 	AudioGlobal.play_music(soundtrack)
 
-	# 1. Puxa toda a introdução do JSON juntando as frases com quebra de linha
 	var array_introducao = System.pages["introducao"]
 	var texto_completo = "\n".join(array_introducao)
 
-	# 2. Imprime a introdução e as instruções iniciais direto na tela
 	_print_terminal(texto_completo + "\n\nDigite 'olhar quarto' para começar ou 'ajuda' para comandos.")
-
-	# 3. Colocamos o foco automaticamente no campo de texto
 	$LineEdit.grab_focus()
 
 
-# O "= Callable()" significa que, se você não passar nada, ela assume que é vazio (não faz nada).
-func _print_terminal(new_Phrase: String, final_event: Callable = Callable()) -> void:
-	# Trava de Segurança: Se o jogador digitar um comando antes do texto atual terminar,
-	# nós "matamos" a animação antiga para a nova poder assumir a tela limpa.
+func _print_terminal(new_phrase: String, final_event: Callable = Callable()) -> void:
 	if actual_tween:
 		actual_tween.kill()
 
 	var initial_caracter = get_total_character_count()
-	append_text(new_Phrase)
+	append_text(new_phrase)
 	visible_characters = initial_caracter
 
-	# 2. Verifica qual é o novo total de letras na tela
 	var final_caracters = get_total_character_count()
-
-	# 3. Descobre exatamente quantas letras NOVAS precisamos animar
 	var new_letters_quant = final_caracters - initial_caracter
-
-	# 4. A mágica matemática: Tempo Total = Quantidade de Letras * Velocidade de 1 Letra
 	var calculated_time = float(new_letters_quant) * timer_per_letter
 
-	# Cria o motor e aplica o tempo dinâmico
-	var actual_tween = create_tween()
+	# CORREÇÃO: Sem o "var", agora ele atualiza a variável global corretamente!
+	actual_tween = create_tween()
 	actual_tween.tween_property(self, "visible_characters", get_total_character_count(), calculated_time)
 
 	if final_event.is_valid():
@@ -64,6 +51,15 @@ func _interpret_command(input: String) -> void:
 			_process_action("olhar", object)
 		"pegar", "coletar":
 			_process_action("pegar", object)
+		"ler":
+			_process_action("ler", object)
+		"usar", "utilizar":
+			# O comando "usar" exige 3 palavras (ex: usar chave porta)
+			if words.size() >= 3:
+				var target = input.get_slice(" ", 2)
+				_process_interation(object, target)
+			else:
+				_print_terminal("Como usar? Formato correto: usar [item] [alvo]. (Ex: usar chave porta)")
 		_:
 			_print_terminal("Comando inválido. Digite 'ajuda' para comandos suportados.")
 
@@ -73,36 +69,82 @@ func _process_action(verb: String, object: String) -> void:
 		_print_terminal("O que você quer " + verb + "? Especifique um objeto (Ex: " + verb + " janela)")
 		return
 
-	if System.pages.has(verb) and System.pages[verb].has(object):
-		var awnser_text = System.pages[verb][object]
-		_print_terminal(awnser_text, AudioGlobal.play_music.bind("matinta_whisper"))
+	var room_data = System.pages["comodos"][System.current_room]
 
-		if object == "janela":
-			System.change_sanity(-10)
+	# 1. Define em qual "gaveta" do JSON do quarto atual nós vamos procurar
+	var category = ""
+	match verb:
+		"olhar", "investigar":
+			category = "olhar"
+		"pegar", "coletar":
+			category = "itens"
+		"ler":
+			category = "documentos"
 
+	# 2. Verifica se a gaveta existe e se o objeto que o jogador digitou está lá
+	if room_data.has(category) and room_data[category].has(object):
+		# Lógica exclusiva para o verbo "pegar"
+		if category == "itens":
+			if System.inventory.has(object):
+				_print_terminal("Você já pegou esse item. Ele está no seu inventário.")
+				return
+			System.inventory.append(object)
+
+		# Pega os dados do objeto (pode ser um texto simples ou um Dicionário com áudio)
+		var item_data = room_data[category][object]
+
+		if typeof(item_data) == TYPE_DICTIONARY:
+			var text_to_print = item_data["texto"]
+
+			if item_data.has("event_sound"):
+				var audio_file = load("res://assets/audio/" + item_data["event_sound"] + ".ogg")
+				_print_terminal(text_to_print, AudioGlobal.play_music.bind(audio_file))
+			else:
+				_print_terminal(text_to_print)
+
+		elif typeof(item_data) == TYPE_STRING:
+			_print_terminal(item_data)
+
+			# Lógica de evento hardcoded na action (como perder sanidade ao olhar a janela)
+			if verb == "olhar" and object == "janela":
+				System.change_sanity(-10)
 	else:
-		_print_terminal("Você não vê nenhum '" + object + "' aqui para " + verb + ".")
+		_print_terminal("Você não pode " + verb + " isso agora.")
 
 
-# Esta função "ouve" cada tecla que você aperta enquanto está no LineEdit
+func _process_interation(inventory_item: String, scenario_target: String) -> void:
+	var room_data = System.pages["comodos"][System.current_room]
+
+	if room_data.has("interacoes") and room_data["interacoes"].has(scenario_target):
+		var interaction_data = room_data["interacoes"][scenario_target]
+		var required_item = interaction_data["requer"]
+
+		if inventory_item == required_item and System.inventory.has(inventory_item):
+			# SUCESSO
+			if interaction_data.has("event_sound"):
+				var audio_file = load("res://assets/audio/" + interaction_data["event_sound"] + ".ogg")
+				_print_terminal(interaction_data["texto_sucesso"], AudioGlobal.play_music.bind(audio_file))
+			else:
+				_print_terminal(interaction_data["texto_sucesso"])
+
+			# ==========================================
+			# TODO: CÓDIGO DE TRANSIÇÃO DE CENA AQUI
+			# ==========================================
+
+		else:
+			# FALHA
+			_print_terminal(interaction_data["texto_falha"])
+	else:
+		_print_terminal("Não faz sentido usar isso aí.")
+
+
 func _on_line_edit_gui_input(event: InputEvent) -> void:
-	# Verifica se a tecla apertada foi o Enter ("ui_accept" é o nome padrão do Enter na Godot)
 	if event.is_action_pressed("ui_accept"):
-		# 1. Sequestramos o evento! Isso diz à Godot: "Eu já cuidei do Enter, não mude o foco e não faça mais nada!"
 		$LineEdit.accept_event()
-
-		# 2. Pegamos o texto e limpamos o campo na mesma hora
 		var command_typed = $LineEdit.text
 		$LineEdit.clear()
-
-		# 3. Fazemos a mesma limpeza de antes
-		var cleanAwnser = command_typed.to_lower().strip_edges()
-
-		if cleanAwnser == "":
+		var clean_awnser = command_typed.to_lower().strip_edges()
+		if clean_awnser == "":
 			return
-
-		# 4. Limpa a tela e imprime o comando
 		text = "> " + command_typed + "\n\n"
-
-		# 5. Roda a nossa lógica do jogo
-		_interpret_command(cleanAwnser)
+		_interpret_command(clean_awnser)
