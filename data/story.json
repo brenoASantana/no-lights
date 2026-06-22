@@ -1,53 +1,59 @@
 {
   "prologo": [
-	"O Sol não nasceu hoje. A luz simplesmente desistiu de existir...",
-    "A temperatura cai vertiginosamente. O ar fica pesado."
+	"O noticiário das oito prometeu que a escuridão do eclipse duraria apenas algumas horas. Eles mentiram.",
+	"O relógio no canto da tela pisca 08:42 da manhã, mas além do vidro da janela, o céu é um oceano absoluto e sufocante de piche. O Sol simplesmente desistiu de nascer.",
+	"Você afasta o mouse inútil para o lado, empurrando-o para as sombras da escrivaninha. Neste novo mundo, não há mais para onde apontar ou clicar.",
+	"Seus pulsos pesam e afundam sobre a madeira fria. O plástico áspero das teclas mecânicas é a única coisa tangível e real sob seus dedos.",
+	"O silêncio na casa é sepulcral, quebrado apenas pelo zumbido elétrico e pelo brilho neon verde deste velho monitor de tubo.",
+	"A temperatura despenca. O ar fica pesado, exigindo esforço para encher os pulmões.",
+    "A luz estática da tela projeta sua silhueta na parede atrás da cadeira... E então, você percebe que a sua sombra acabou de se mover, mas você não."
   ],
   "comodos": {
-	"quarto": {
-	  "descricao": "Um cômodo claustrofóbico. A única luz vem da estática deste terminal. Há uma porta, uma janela com o vidro trincado.",
+	"escritorio": {
+	  "descricao": "Seu santuário e sua prisão. O brilho verde do monitor banha a escrivaninha bagunçada. O ar cheira a poeira e ozônio. Há uma porta à sua frente, e uma janela pesada à esquerda.",
 	  "olhar": {
-		"janela": "A janela está trancada por fora. Pela fresta, um vento com cheiro de mato úmido entra no quarto.",
-		"porta": "Uma porta de madeira maciça. Trancada. Tem uma fechadura antiga.",
-		"chao": "O assoalho de madeira range. O recorte de jornal parece estar sujo de terra."
+		"janela": "O vidro está embaçado e gelado. O breu lá fora é tão espesso que parece engolir a luz do monitor. Pela fresta, entra um cheiro forte de terra úmida e mato amassado.",
+		"porta": "Uma porta de madeira maciça. Trancada por dentro. A maçaneta de metal está coberta de condensação.",
+		"mesa": "O teclado clica sob seus dedos. Ao lado do monitor, há uma xícara de café frio e uma gaveta entreaberta.",
+		"chao": "Pilhas de papéis inúteis se perdem nas sombras do chão. Entre eles, um jornal que você não se lembra de ter trazido para dentro."
 	  },
 	  "itens": {
 		"chave": {
-		  "texto": "Você tateia o rodapé e seus dedos batem em um metal pesado. Você pegou a Chave Enferrujada.",
+		  "texto": "Você puxa a gaveta emperrada da escrivaninha. Entre clipes enferrujados e fios antigos, você encontra a Chave do Escritório.",
 		  "event_sound": "pegar_chave"
 		},
 		"lanterna": {
-		  "texto": "Você abre a gaveta e encontra uma lanterna plástica. Está sem pilhas.",
+		  "texto": "Escondida atrás do monitor, você encontra uma lanterna plástica. O interruptor clica seco. Está sem pilhas.",
 		  "event_sound": "pegar_plastico"
 		}
 	  },
 	  "documentos": {
 		"jornal": {
-		  "texto": "As autoridades pedem calma... (Ela com certeza ouviu você).",
+		  "texto": "É um diário local antigo, com as bordas rasgadas. A manchete alerta sobre o 'Terror do Norte'. As autoridades pedem calma diante dos relatos de assobios estridentes na madrugada... (O papel está manchado de lama fresca. Ela com certeza sabe que você está lendo isso).",
 		  "event_sound": "whisper_matinta"
 		}
 	  },
 	  "interacoes": {
 		"porta": {
 		  "requer": "chave",
-		  "texto_sucesso": "Você insere a chave enferrujada. O trinco estala e a porta se abre rangendo, revelando a escuridão do corredor.",
+		  "texto_sucesso": "Você insere a chave e gira. A fechadura estala alto quebrando o silêncio. A porta do escritório se abre lentamente, revelando a escuridão densa do corredor.",
 		  "event_sound": "porta_destrancando",
-		  "texto_falha": "A porta está trancada. Você precisa de algo para abrir isso."
+		  "texto_falha": "A maçaneta não cede. Você trancou a porta ontem à noite e precisa da chave para sair daqui."
 		}
 	  }
 	},
 	"corredor": {
-	  "descricao": "Um corredor longo e estreito. O papel de parede está descascando. Você pode ir para o 'banheiro', 'escritorio' ou 'sala'."
+	  "descricao": "Um corredor longo e absurdamente estreito. O papel de parede floral descasca como pele morta. A partir daqui, você pode ir para o 'quarto', 'banheiro' ou tentar a 'sala'."
+	},
+	"quarto": {
+	  "descricao": "O ar aqui é ainda mais gélido. A cama está desarrumada, como se algo grande tivesse acabado de levantar dela."
 	},
 	"banheiro": {
-	  "descricao": "O cheiro de mofo é insuportável. O espelho está quebrado."
-	},
-	"escritorio": {
-	  "descricao": "Livros espalhados pelo chão. Há um cofre enferrujado na parede."
+	  "descricao": "O cheiro de mofo é sufocante. A água pinga lentamente da torneira. O espelho sobre a pia está estilhaçado."
 	},
 	"sala": {
-	  "descricao": "A porta da frente está logo ali. Mas há algo bloqueando a saída."
+	  "descricao": "A porta da rua está logo ali. Mas a mobília foi toda arrastada para bloqueá-la."
 	}
   },
-  "ajuda": "Comandos válidos: olhar [objeto], pegar [objeto], ler [documento], usar [objeto] em [alvo]. Exemplo: 'pegar chave'."
+  "ajuda": "Comandos válidos: olhar [objeto], pegar [objeto], ler [documento], usar [item] [alvo]. Exemplo: 'olhar mesa'."
 }

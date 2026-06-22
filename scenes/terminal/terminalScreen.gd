@@ -9,7 +9,7 @@ func _ready() -> void:
 	AudioGlobal.stop_music()
 	AudioGlobal.play_music(soundtrack)
 
-	var array_introducao = System.pages["introducao"]
+	var array_introducao = System.pages["prologo"]
 	var texto_completo = "\n".join(array_introducao)
 
 	_print_terminal(texto_completo + "\n\nDigite 'olhar quarto' para começar ou 'ajuda' para comandos.")

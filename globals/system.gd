@@ -13,7 +13,7 @@ var sanity: int = 100
 var pages: Dictionary = { }
 
 var inventory: Array = []
-var current_room: String = "quarto" # O jogo sempre começa aqui
+var current_room: String = "escritorio" # O jogo sempre começa aqui
 
 
 func _ready() -> void:
