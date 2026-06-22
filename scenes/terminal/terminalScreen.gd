@@ -139,7 +139,7 @@ func _process_interation(inventory_item: String, scenario_target: String) -> voi
 
 
 func _on_line_edit_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_text_submit"):
 		$LineEdit.accept_event()
 		var command_typed = $LineEdit.text
 		$LineEdit.clear()
