@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://vptr7c2f3fmi"]
+
+[ext_resource type="Script" uid="uid://cn4xic24xkx1c" path="res://scenes/intro/intro.gd" id="1_qeukb"]
+
+[node name="Intro" type="Control" unique_id=620306856]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_qeukb")
+
+[node name="IntroCutscene" type="AnimationPlayer" parent="." unique_id=488909897]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1874774557]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -41.5
+offset_right = 72.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="SkipLabel" type="Label" parent="MarginContainer" unique_id=673291813]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+text = "[ESC] Pular"
+
+[connection signal="animation_finished" from="IntroCutscene" to="." method="_on_intro_cutscene_animation_finished"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="No Lights"
-run/main_scene="uid://dwqoymr2u3qg7"
+run/main_scene="uid://vptr7c2f3fmi"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
