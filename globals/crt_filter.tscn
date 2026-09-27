@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ccncycddw88kc"]
 
-[ext_resource type="Shader" uid="uid://fadbhyetafjo" path="res://scenes/terminal/terminal.gdshader" id="1_onwgr"]
+[ext_resource type="Shader" uid="uid://fadbhyetafjo" path="res://globals/crt_filter.gdshader" id="1_onwgr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ax852"]
 shader = ExtResource("1_onwgr")

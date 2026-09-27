@@ -10,23 +10,25 @@ O projeto adota uma arquitetura orientada a funcionalidades (Feature-Based). Arq
 ├── .gitignore
 ├── project.godot
 ├── README.md
-├── architecture.md
+├── docs/
+│   └── ARCHITECTURE.md
 │
-├── data/                 # Banco de Dados e Textos
-│   └── historia.json     # Árvore narrativa do terminal
+├── data/                 # Banco de dados e textos
+│   └── story.json        # Árvore narrativa do terminal
 │
 ├── globals/              # O Olimpo (Singletons / Autoloads)
-│   ├── system.gd         # Gerenciador de Estado (Memória)
-│   └── filtro_crt.tscn   # Camada visual persistente
-│
-├── entities/             # Atores que trafegam entre as fases
-│   └── player/           # Lógica física do jogador (2D/3D)
+│   ├── system.gd         # Gerenciador de estado
+│   ├── audio_global.gd   # Música e crossfade
+│   ├── crt_filter.tscn   # Camada visual persistente
+│   └── crt_filter.gdshader
 │
 └── scenes/               # Fases e Interfaces isoladas
-    ├── main_menu/        # Porta de entrada do jogo
-    ├── terminal/         # Fase 1: RPG de Texto (Interface Control)
-    ├── level_02_street/  # Fase 2: Exploração 2D
-    └── level_03_maze/    # Fase 3: Labirinto Procedural 3D
+	├── intro/            # Introdução e skip
+	├── main_menu/        # Porta de entrada do jogo
+	├── terminal/         # Fase 1: RPG de Texto (Interface Control)
+	├── options/          # Configurações
+	├── credits/          # Créditos
+	└── dark_neighbourhood/ # Espaço reservado para a próxima fase
 
 ```
 
@@ -40,11 +42,11 @@ O jogo utiliza o padrão **Singleton** através dos Autoloads nativos da Godot p
 * **Responsabilidades:**
 * Armazenar as variáveis globais (`player_name`, `health`, `sanity`).
 * Despachar Sinais (Padrão *Observer*) para notificar as cenas ativas sobre dano ou perda de sanidade.
-* Carregar e parsear o arquivo `historia.json` na memória durante a inicialização (método `_ready()`).
+* Carregar e parsear o arquivo `story.json` na memória durante a inicialização (método `_ready()`).
 
 
 
-### Renderização Global: `FiltroCRT.tscn` (A Lente)
+### Renderização Global: `crt_filter.tscn` (A Lente)
 
 * **Função:** Cena global instanciada no topo da árvore de execução.
 * **Composição:** Nó raiz `CanvasLayer` (Layer: 100) contendo um `ColorRect` em Full Rect com material de Shader.
@@ -54,13 +56,13 @@ O jogo utiliza o padrão **Singleton** através dos Autoloads nativos da Godot p
 
 A fase inicial (`terminal.tscn`) implementa um interpretador básico inspirado em aventuras de texto (MUDs). A arquitetura separa a intenção da resolução:
 
-1. **Captura:** O jogador digita no `LineEdit` e aciona `text_submitted`.
-2. **Sanitização:** O input é convertido para *lowercase* e sofre *strip_edges()*.
-3. **Tokenização:** A função `_interpretar_comando` realiza o `split(" ")` para separar:
+1. **Captura:** O jogador digita no `LineEdit` e aciona `gui_input` com `ui_text_submit`.
+2. **Sanitização:** O input é convertido para *lowercase* e sofre `strip_edges()`.
+3. **Tokenização:** A função `_interpret_command` realiza o `split(" ")` para separar:
 * `Índice [0]`: Verbo/Ação (Ex: *olhar*, *pegar*).
 * `Índice [1..N]`: Objeto Alvo (Ex: *janela*).
 
 
-4. **Despacho Dinâmico:** Um bloco `match` mapeia os verbos válidos e invoca `_processar_acao`.
-5. **Consulta de Dados:** O sistema busca no dicionário carregado no `System` a validação das chaves `System.paginas[verbo][objeto]`.
+4. **Despacho:** Um bloco `match` mapeia os verbos válidos e invoca `_process_action` ou `_process_interation`.
+5. **Consulta de Dados:** O sistema busca no dicionário carregado no `System` os dados de `System.pages["comodos"][System.current_room]`.
 6. **Renderização:** O texto resultante é adicionado via `append_text()` e animado frame-a-frame por um `Tween` instanciado localmente, alterando a propriedade `visible_characters`.

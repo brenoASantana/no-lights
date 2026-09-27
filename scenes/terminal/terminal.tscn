@@ -2,7 +2,7 @@
 
 [ext_resource type="FontFile" uid="uid://c5iaqtves12kf" path="res://assets/fonts/ShareTechMono-Regular.ttf" id="1_0uvmq"]
 [ext_resource type="AudioStream" uid="uid://bj0btuoe8bfdk" path="res://assets/audio/Library Studies - Pentagram Home Video/A Warning Before Reading.ogg" id="3_0uvmq"]
-[ext_resource type="Script" uid="uid://cpskdktncjjif" path="res://scenes/terminal/terminalScreen.gd" id="4_0u45f"]
+[ext_resource type="Script" uid="uid://cpskdktncjjif" path="res://scenes/terminal/terminal_screen.gd" id="4_0u45f"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y7k8"]
 

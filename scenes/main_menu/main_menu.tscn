@@ -19,18 +19,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 
-[node name="HBoxTitle" type="HBoxContainer" parent="MarginContainer" unique_id=488580641]
+[node name="VBoxTitle" type="VBoxContainer" parent="MarginContainer" unique_id=1480614182]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="TitleLabel" type="Label" parent="MarginContainer/HBoxTitle" unique_id=36427278]
+[node name="TitleLabel" type="Label" parent="MarginContainer/VBoxTitle" unique_id=36427278]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_0ebjn")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 126
 text = "No Lights"
 
 [node name="HBoxMenu" type="HBoxContainer" parent="MarginContainer" unique_id=1371006545]
