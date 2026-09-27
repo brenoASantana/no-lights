@@ -40,26 +40,20 @@ func stop_music() -> void:
 	music_player.stream = null
 
 
-func _do_crossfade(temp_music_player: AudioStreamPlayer, music_player: AudioStreamPlayer) -> void:
+func _do_crossfade(_temp_music_player: AudioStreamPlayer, novo_player: AudioStreamPlayer) -> void:
 	if actual_tween:
 		actual_tween.kill()
 
 	actual_tween = create_tween()
-
-	# Inicia o bloco paralelo
 	actual_tween.set_parallel(true)
 
-	# Se existir uma música velha, abaixa o volume dela para o silêncio absoluto em 2 segundos
-	if temp_music_player != null:
-		actual_tween.tween_property(temp_music_player, "volume_db", -80.0, 2.0)
+	if _temp_music_player != null:
+		actual_tween.tween_property(_temp_music_player, "volume_db", -80.0, 2.0)
 
-	# Sobe a música nova para o volume ambiente (-15 dB) nos mesmos 2 segundos
-	actual_tween.tween_property(music_player, "volume_db", -15.0, 2.0)
+	# Atualizamos o nome aqui para corresponder ao novo argumento e evitar o conflito
+	actual_tween.tween_property(novo_player, "volume_db", -15.0, 2.0)
 
-	# Fecha o bloco paralelo. Tudo daqui para baixo voltará a ser executado em fila (esperando acabar)
 	actual_tween.set_parallel(false)
 
-	# 2. CALLBACK DIRECIONADO: Passamos a referência da função "queue_free" do nó temporário
-	# A Godot vai esperar os 2 segundos da animação acabarem para, só então, executar a limpeza.
-	if temp_music_player != null:
-		actual_tween.tween_callback(temp_music_player.queue_free)
+	if _temp_music_player != null:
+		actual_tween.tween_callback(_temp_music_player.queue_free)
